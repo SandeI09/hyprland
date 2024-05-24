@@ -56,7 +56,7 @@ if [[ $WIFI == "Y" || $WIFI == "y" ]]; then
 fi
 
 ### Install all of the above pacakges ####
-read -p 'Would you like to install the packages? (y,n)' INST
+read -n1 -rep 'Would you like to install the packages? (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
     yay -S --noconfirm hyprland kitty waybar \
     swaybg swaylock-effects wofi wlogout mako nautilus \
@@ -67,9 +67,9 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     dracula-gtk-theme dracula-icons-git xdg-desktop-portal-hyprland \
 
     read -n1 -rep 'Would you like to install gnome as well(y/n)?' CH
-    if [[ $CH == "y" || $CH == "Y"]]; then
-        yay -S --noconfirm gnome
-    fi 
+    if [[ $CH == "y" || $CH == "Y" ]]; then
+    yay -S --noconfirm gnome
+    fi
 
     # Start the bluetooth service
     echo -e "Starting the Bluetooth Service...\n"

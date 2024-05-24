@@ -103,7 +103,7 @@ read -n1 -rep 'Which shell would you like to install?(1 => bash / 2 => zsh) (y,n
 if [[ $SHELL == "1" ]]; then
     # install the bash shell
     echo -e "Changing shell and updating .bashrc...\n"
-    chsh $USER -s /bin/bash
+    sudo chsh $USER -s /bin/bash
     cp shell/bash/kitsune.theme-bash ~/.bashrc
     echo set completion-ignore-case on | sudo tee -a /etc/inputrc
     # source ~/.bashrc

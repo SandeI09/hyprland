@@ -107,8 +107,7 @@ if [[ $SHELL == "1" ]]; then
     cp shell/bash/kitsune.theme-bash ~/.bashrc
     echo set completion-ignore-case on | sudo tee -a /etc/inputrc
     # source ~/.bashrc
-fi
-if [[ $SHELL == "2"]]; then
+elif [[ $SHELL == "2" ]]; then
     # install the zsh shell
     echo -e "Changing shell and updating .zshrc...\n"
     sudo chsh $USER -s /bin/zsh

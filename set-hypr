@@ -96,23 +96,22 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
     chmod +x ~/.config/waybar/scripts/waybar-wttr.py
 fi
 
-### Install custom shell shell ###
 echo -e "Adding bash and zsh config files"
-read -n1 -rep 'Which shell would you like to install?(1 => bash / 2 => zsh) (y,n)' SHELL
-if [[ $SHELL == "1"]]; then
+read -p "Which shell would you like to install? (1 => bash / 2 => zsh) " SHELL
+if [[ $SHELL == "1" ]]; then
     # install the bash shell
     echo -e "Changing shell and updating .bashrc...\n"
-    sudo chsh $USER -s /bin/bash
+    chsh $USER -s /bin/bash
     cp shell/bash/kitsune.theme-bash ~/.bashrc
-    echo set completion-ignore-case on | sudo tee -a /etc/inputrc
+    echo "set completion-ignore-case on" >> ~/.inputrc
     # source ~/.bashrc
 fi
-if [[ $SHELL == "2"]]; then
+if [[ $SHELL == "2" ]]; then
     # install the zsh shell
     echo -e "Changing shell and updating .zshrc...\n"
-    sudo chsh $USER -s /bin/zsh
+    chsh $USER -s /bin/zsh
     cp shell/zsh/fox.theme-zsh ~/.zshrc
-    echo set completion-ignore-case on | sudo tee -a /etc/inputrc
+    echo "set completion-ignore-case on" >> ~/.inputrc
     # source ~/.zshrc
 fi
 

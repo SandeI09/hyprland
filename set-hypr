@@ -24,7 +24,7 @@ read -p "Do you want to install the packages? (y/n) " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    sudo pacman -S --needed hyprland kitty waybar \
+    sudo pacman -S --noconfirm hyprland kitty waybar \
     swaybg swaylock-effects wofi wlogout mako nautilus \
     ttf-jetbrains-mono-nerd noto-fonts-emoji \
     polkit-gnome python-requests zsh bash grub-customizer os-prober\

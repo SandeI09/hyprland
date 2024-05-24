@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Check for yay
-if ! command -v yay &>/dev/null; then
+if ! command -v yay &> /dev/null
+then
     echo "yay not found, installing..."
     sudo pacman -S --needed git base-devel
     git clone https://aur.archlinux.org/yay.git
@@ -12,7 +13,8 @@ fi
 # Disable wifi powersave mode
 read -p "Do you want to disable wifi powersave? (y/n) " -n 1 -r
 echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
     sudoedit /etc/NetworkManager/conf.d/wifi-powersave.conf
     sudo systemctl restart NetworkManager
 fi
@@ -20,11 +22,19 @@ fi
 # Install packages
 read -p "Do you want to install the packages? (y/n) " -n 1 -r
 echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    sudo pacman -S --needed hyprland kitty waybar swaybg swaylock-effects wofi wlogout mako nautilus ttf-jetbrains-mono-nerd noto-fonts-emoji polkit-gnome python-requests swappy grim slurp pamixer brightnessctl gvfs bluez bluez-utils lxappearance xfce4-settingsdracula-gtk-theme dracula-icons-git xdg-desktop-portal-hyprland
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo pacman -S --needed hyprland kitty waybar \
+    swaybg swaylock-effects wofi wlogout mako nautilus \
+    ttf-jetbrains-mono-nerd noto-fonts-emoji \
+    polkit-gnome python-requests zsh bash grub-customizer os-prober\
+    swappy grim slurp pamixer brightnessctl gvfs \
+    bluez bluez-utils lxappearance xfce4-settings \
+    dracula-gtk-theme dracula-icons-git xdg-desktop-portal-hyprland \
     read -p "Do you want to install gnome as well? (y/n) " -n 1 -r
     echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
         sudo pacman -S --needed gnome
     fi
 fi
@@ -32,7 +42,8 @@ fi
 # Copy config files
 read -p "Do you want to copy config files? (y/n) " -n 1 -r
 echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
     cp -R hypr ~/.config/
     cp -R kitty ~/.config/
     cp -R mako ~/.config/
@@ -46,11 +57,13 @@ fi
 # Install custom shell
 read -p "Which shell would you like to install? (1 => bash / 2 => zsh) " -n 1 -r
 echo
-if [[ $REPLY =~ ^[1]$ ]]; then
+if [[ $REPLY =~ ^[1]$ ]]
+then
     sudo chsh $USER -s /bin/bash
     cp shell/bash/kitsune.theme-bash ~/.bashrc
     echo set completion-ignore-case on | sudo tee -a /etc/inputrc
-elif [[ $REPLY =~ ^[2]$ ]]; then
+elif [[ $REPLY =~ ^[2]$ ]]
+then
     sudo chsh $USER -s /bin/zsh
     cp shell/zsh/fox.theme-zsh ~/.zshrc
     echo set completion-ignore-case on | sudo tee -a /etc/inputrc
@@ -59,7 +72,8 @@ fi
 # Install Asus ROG software support
 read -p "Do you have an Asus ROG laptop? (y/n) " -n 1 -r
 echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
     sudo pacman-key --recv-keys 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
     sudo pacman-key --finger 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
     sudo pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
@@ -75,13 +89,15 @@ fi
 # Install Grub Sleek-dark theme
 read -p "Do you want to install Sleek Theme-dark for grub? (y/n) " -n 1 -r
 echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
     sudoedit /etc/default/grub
     ./grub/sleek-dark/install.sh --noconfirm
 fi
 
 echo "Script completed. You can start Hyprland by typing 'Hyprland' (note the capital H)."
 read -p "Do you want to start Hyprland now? (y/n) " -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]; then
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
     exec Hyprland
 fi

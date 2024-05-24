@@ -100,10 +100,10 @@ fi
 ### Install custom shell shell ###
 echo -e "Adding bash and zsh config files"
 read -n1 -rep 'Which shell would you like to install?(1 => bash / 2 => zsh) (y,n)' SHELL
-if [[ $SHELL == "1"]]; then
+if [[ $SHELL == "1" ]]; then
     # install the bash shell
     echo -e "Changing shell and updating .bashrc...\n"
-    sudo chsh $USER -s /bin/bash
+    chsh $USER -s /bin/bash
     cp shell/bash/kitsune.theme-bash ~/.bashrc
     echo set completion-ignore-case on | sudo tee -a /etc/inputrc
     # source ~/.bashrc

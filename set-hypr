@@ -107,6 +107,7 @@ if [[ $SHELL == "1" ]]; then
     cp shell/bash/kitsune.theme-bash ~/.bashrc
     echo set completion-ignore-case on | sudo tee -a /etc/inputrc
     # source ~/.bashrc
+    $SHELL = bash
 elif [[ $SHELL == "2" ]]; then
     # install the zsh shell
     echo -e "Changing shell and updating .zshrc...\n"
@@ -114,6 +115,7 @@ elif [[ $SHELL == "2" ]]; then
     cp shell/zsh/fox.theme-zsh ~/.zshrc
     echo set completion-ignore-case on | sudo tee -a /etc/inputrc
     # source ~/.zshrc
+    $SHELL = zsh
 fi
 
 
@@ -146,7 +148,7 @@ fi
 read -n1 -rep 'Would you like to install Sleek Theme-dark for grub? (y,n)?' GRUB
 if [[ $GRUB == "Y" || $GRUB == "y" ]]; then
     echo -e "Installing Sleek grub theme-dark"
-    sudo shell ./grub/sleek-dark/install.sh --noconfirm
+    sudo $shell ./grub/sleek-dark/install.sh --noconfirm
     sleep 2
 
     ### Copying config file for grub bootloader

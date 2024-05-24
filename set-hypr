@@ -160,12 +160,11 @@ if [[ $GRUB == "Y" || $GRUB == "y" ]]; then
 fi
 
 
-### Script is done ###
 echo -e "Script had completed.\n"
 echo -e "You can start Hyprland by typing Hyprland (note the capital H).\n"
-read -n1 -rep 'Would you like to start Hyprland now? (y,n)' HYP
+read -p "Would you like to start Hyprland now? (y,n) " HYP
 if [[ $HYP == "Y" || $HYP == "y" ]]; then
-    exec Hyprland
+    Hyprland
 else
     exit
 fi

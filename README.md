@@ -1,5 +1,5 @@
 # hyprland
-# This is the fork of https://github.com/SolDoesTech/hyprland from SoldoesTech where I have modified and add multiple things that match my style. You can visit this site for the original Hyprland config.  
+### This is the fork of https://github.com/SolDoesTech/hyprland from SoldoesTech where I have modified and add multiple things that match my style. You can visit this site for the original Hyprland config.  
 collection of dot config files for hyprland with a simple install script for a fresh Arch linux with yay
 
 You can grab the config files and install packages by hand with this commnad
